@@ -1,7 +1,7 @@
 # Train-Dataset-NSL_KDD
 This project involves training a deep learning model on the NSL_KDD dataset for Intrusion Detection Systems (IDS). The trained model can help identify potential intrusions and enhance the security of a system.
 
-##Table of Contents
+## Table of Contents
 - Technologies Used
 -Installation
 -Usage
