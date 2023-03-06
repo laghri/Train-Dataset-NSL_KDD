@@ -21,7 +21,7 @@ This project uses several technologies, including:
 ## Results
 The trained mode
 ### To use this project, first clone the repository:
- git clone https://github.com/YOUR-USERNAME/Train-Dataset-NSL_KDD.git
+ git clone https://github.com/laghri/Train-Dataset-NSL_KDD.git
 ### Then, install the required dependencies:
 pip install tensorflow,pandas,Numpy...
 ## Usage
