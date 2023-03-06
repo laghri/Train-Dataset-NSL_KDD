@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Credit App</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/test.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='LOGO.png') }}" alt="Image">
+       </nav>
+      </header>
+ <div class="login">
+   
+    <h1>NSL_KDD Model Testing</h1>
+    <form action="predict" method="post" enctype="multipart/form-data">
+      <input type="file" name="fileToUpload" class="input" >
+      <input type="submit" value="Upload and Test" id="submit-button" >
+    </form>
+    
+
+   <br>
+   <br>
+   <div>
+   
+        
+    </div>
+   <span class="{% if condition %}true {% else %} fasle{% endif %}">
+   {% if condition %}
+   la reponse de votre requetes: yes 
+   {% else %}
+   la reponse de votre requetes: No  
+   {% endif %}
+      
+   </span>
+   
+
+ </div>
+
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Credit App</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/test.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <a class="navbar-brand" href="#"><span style="color:#ff4d29 ;"
+                >I</span>ntrusion <span style="color:#ff4d29 ;">D</span>etection <span style="color:#ff4d29 ;">S</span>ystem<span class="dot">.</span></a>
+            
+              </nav>
+              <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-brand ms-lg-3">
+                Upload
+              </button>
+      </header>
+ <div class="login">
+    <h1>Test du Model NSL_KDD</h1>
+<form action="predict_input" method="post">
+    <div class="form-group">
+        <select class="input" name="protocol_type"  >
+            <option value=" " disabled selected>protocol_type</option>
+            <option value="0">icmp</option>
+            <option value="1">tcp</option>
+            <option value="2">udp</option>
+         
+        </select>
+      
+    </div>
+    <div class="form-group">
+        <select class="input" name="flag"   >
+            <option value=" " disabled selected>flag</option>
+            <option value="9">SF</option>
+            <option value="5">S0</option>
+            <option value="1">REJ</option>
+            <option value="4">RSTR</option>
+            <option value="10">SH</option>
+            <option value="2">RSTO</option>
+            <option value="6">S1</option>
+            <option value="3">RSTOS0</option>
+            <option value="8">S3</option>
+            <option value="7">S2</option>
+            <option value="0">OTH</option>
+            
+         
+        </select>
+     
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="src_bytes" name="src_bytes"  placeholder="src_bytes"   class="input"    >
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_bytes" name="dst_bytes" placeholder="dst_bytes"   class="input" >
+    </div>
+    <div class="form-group">
+
+      <input type="text" id="hot" name="hot"  placeholder="hot" class="input" > 
+    </div>
+    <div class="form-group">
+
+      <input type="text" id="count" name="count" class="input" placeholder="count">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="srv_count" name="srv_count" placeholder="srv_count" class="input">
+    </div>
+    <div class="form-group">
+ 
+      <input type="text" id="same_srv_rate" name="same_srv_rate" placeholder="same_srv_rate" class="input">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_host_count" name="dst_host_count" placeholder="dst_host_count" class="input">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_host_srv_count" name="dst_host_srv_count" placeholder="dst_host_srv_count" class="input">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_host_same_srv_rate" name="dst_host_same_srv_rate" placeholder="dst_host_same_srv_rate" class="input">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate" placeholder="dst_host_diff_srv_rate" class="input">
+    </div>
+    <div class="form-group">
+      
+      <input type="text" id="dst_host_same_src_port_rate" name="dst_host_same_src_port_rate" placeholder="dst_host_same_src_port_rate" class="input">
+    </div>
+    <div class="form-group">
+        
+        <input type="text" id="dst_host_rerror_rate" name="dst_host_rerror_rate" placeholder="dst_host_rerror_rate" class="input">
+      </div>
+      <br>
+      <input type="submit" value="Predict" id="submit-button" >
+      
+    </form>
+    <span class="{% if condition and v %}true {% elif  condition==False and v==True  %} fasle {% else %}Noreq {% endif %}">
+         
+        {% if condition and v %}
+        la reponse de votre requetes: Normal
+        {% elif  condition==False and v==True %}
+        la reponse de votre requetes: Anormal
+        {% else %}
+        la reponse de votre requetes:
+        {% endif %}
+           
+        </span>
+    
+        <br>
+        <br>
+        
+        
+        
+        
+     
+      </div>
+      
+
+
+
+       <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+              <div class="modal-body p-0">
+                  <div class="container-fluid">
+                    
+                          
+                          <div class="col-lg-8 ">
+                            
+                            <form action="predict" method="post" enctype="multipart/form-data">
+                              <input type="file" name="fileToUpload"  class="fileUpl">
+                              <input type="submit" value="Upload and Test"  class="btnUp">
+                            </form>
+                            
+                        </div>
+                      
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/app.js"></script>
+ <script> var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+   myInput.focus()
+})
+</script>
+     
+     </body>
+     </html>
